@@ -1,0 +1,30 @@
+{% extends "Layout/master.html" %}
+{% block title %}Máy tính bảng{% endblock %}
+{% block content %}
+<div class="feature">   
+    <div class="breadcrumbs">
+        <h4>Ipad</h4>
+    </div>
+    
+    <div class="container">
+        {{Chuoi_HTML_iPad}}		
+    </div>
+
+
+    <div class="breadcrumbs">
+        <h4>Samsung</h4>
+    </div>
+    
+    <div class="container">
+        {{Chuoi_HTML_Samsung}}
+    </div>
+
+    <div class="breadcrumbs">
+        <h4>Khác</h4>
+    </div>
+    
+    <div class="container">
+        {{Chuoi_HTML_Tablet_Khac}}		
+    </div>
+</div>
+{% endblock %}

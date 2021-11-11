@@ -1,0 +1,33 @@
+{% extends "Layout/master.html" %}
+{% block title %}Đăng nhập{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.Th_ten_dang_nhap.label}}
+                    {{form.Th_ten_dang_nhap(class="form-control")}}
+
+                    {% for mss in form.Th_ten_dang_nhap.errors %}
+                        <small id="Th_ten_dang_nhap_msg" class="form-text text-muted">{{mss}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{form.Th_mat_khau.label}}
+                    {{form.Th_mat_khau(class="form-control")}}
+
+                    {% for mss in form.Th_mat_khau.errors %}
+                        <small id="Th_mat_khau_msg" class="form-text text-muted">{{mss}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.Th_submit }}
+                </div>
+                Bạn chưa có tài khoản? <a href='/khach-hang/dang-ki'>Đăng kí ngay</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

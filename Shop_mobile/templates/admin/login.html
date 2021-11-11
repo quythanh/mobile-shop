@@ -1,0 +1,46 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% extends 'admin/base.html' %}
+{% block head_tail %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+{% endblock %}
+{% block page_body %}
+<div class="container">
+    {% block body %}
+    <div class="row">
+        <div>
+            {% if current_user.is_authenticated %}
+            <h1>Flask-Admin example</h1>
+            <p class="lead">
+                Authentication
+            </p>
+            <p>
+                This example shows how you can use Flask-Login for authentication. It is only intended as a basic demonstration.
+            </p>
+            {% else %}
+            <div class="container">
+                <form class="form-signin"  method="POST" action="">
+                    {{ form.csrf_token }}
+                  <h2 class="form-signin-heading">Thông tin đăng nhập</h2>
+                  <label for="inputEmail" class="sr-only">Tên đăng nhập</label>
+                  {{form.login( class="form-control" ,placeholder="tên đăng nhập", required=true, autofocus=true)}}
+                  <label for="inputPassword" class="sr-only">Mật khẩu</label>
+                  {{form.password(type='password', class="form-control" ,placeholder="mật khẩu", required=true)}}
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="remember-me"> Ghi nhớ
+                    </label>
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+                </form>
+          
+              </div> <!-- /container -->
+            {{ link | safe }}
+            {% endif %}
+        </div>
+    
+        <p style="text-align: center"><a class="btn btn-primary" href="/"><i class="icon-arrow-left icon-white"></i> Quay lại</a></p>
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}

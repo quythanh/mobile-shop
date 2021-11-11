@@ -1,0 +1,50 @@
+{% extends "Layout/master.html" %}
+{% block title %}Góp ý{% endblock %}
+{% block content %}
+<script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
+{{ ckeditor.load() }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.Th_Ho_ten.label}}
+                    {{form.Th_Ho_ten(class="form-control")}}
+
+                    {% for mss in form.Th_Ho_ten.errors %}
+                        <small id="Th_Ho_ten_msg" class="form-text text-muted">{{mss}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{form.Th_Email.label}}
+                    {{form.Th_Email(class="form-control")}}
+
+                    {% for mss in form.Th_Email.errors %}
+                        <small id="emailHelp" class="form-text text-muted">{{mss}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{form.Th_Ly_do.label}}
+                    {{form.Th_Ly_do(class="form-control")}}
+                </div>
+                <div class="form-group">
+                    {{ form.Th_Gop_y.label }}
+                    {{ form.Th_Gop_y }}
+                    <script>
+                        CKEDITOR.replace("Th_Gop_y")
+                    </script>
+
+                    {% for mss in form.Th_Gop_y.errors %}
+                        <small id="Th_Gop_y_msg" class="form-text text-muted">{{mss}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.Th_submit }}
+                </div>
+            </form>
+            {{Thong_bao}}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "Layout/master.html" %}
+{% block title %}Người dùng{% endblock %}
+{% block content %}
+<div class="feature">    
+    <div class="breadcrumbs">
+        <h4>Thông tin người dùng</h4>
+    </div>
+
+    <div class="container" style="font-size:15px">
+        <b>Tên:</b> {{KH["ho_ten"]}}</br>
+        <b>Giới tính:</b> {% if KH["gioi_tinh"] == 0 %} Nữ {% else %} Nam {% endif %}</br>
+        <b>Ngày sinh:</b> {{KH["ngay_sinh"]}}</br>
+        <b>Địa chỉ:</b> {{KH["dia_chi"]}}</br>
+        <b>Điện thoại:</b> {{KH["dien_thoai"]}}</br>
+        <b>Email:</b> {{KH["email"]}}
+    </div>
+
+    <div class="breadcrumbs">
+        <h4><a href="/khach-hang/hoa-don">Xem hoá đơn</a></h4>
+    </div>
+        
+    <div class="breadcrumbs">
+        <h4><a href="/khach-hang/dang-xuat">Đăng xuất</a></h4>
+    </div>
+</div>
+{% endblock %}

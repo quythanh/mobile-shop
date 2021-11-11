@@ -1,0 +1,25 @@
+{% extends 'quan_li/Layout/master.html' %}
+{% block title %}Quản lí sản phẩm{% endblock %}
+{% block content %}
+<div class="feature">
+    <div class="breadcrumbs">
+        <h3>Tìm kiếm: </h3>
+        <form method="POST">
+            <div class="box">
+                <div class="container-3">
+                    <input type="search" id="search" name="Th_Chuoi_Tim_kiem" placeholder="Nhập tên sản phẩm" />
+                    <button class="icon"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="breadcrumbs">
+        <h4>Quản lí sản phẩm</h4>
+    </div>
+
+    <div class="container">
+        {{Chuoi_HTML_San_pham}}
+    </div>
+</div>
+{% endblock %}

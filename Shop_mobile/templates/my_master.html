@@ -1,0 +1,48 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% extends 'admin/base.html' %}
+{% block head_tail %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+{% endblock %}
+{% block page_body %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="{{url_for('static',filename='img_he_thong/icon-admin.png')}}" width="60x" style="margin-top: -10px"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    {{ layout.menu() }}
+                </ul>
+                {% if current_user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ current_user.login }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('admin.logout_view') }}">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                </ul>
+                {% endif %}
+          </div>
+        </div>
+      </nav>
+
+<div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-sm-12 col-md-12 main">
+                {{ layout.messages() }}
+                {% set render_ctx = h.resolve_ctx() %}
+                {% block body %}{% endblock %}
+          </div>
+        </div>
+      </div>
+  
+{% endblock %}
